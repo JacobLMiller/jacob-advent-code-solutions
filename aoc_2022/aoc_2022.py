@@ -10,7 +10,7 @@ def read_input(path):
 def challenge1(data):
     max_sum,cur_sum = 0,0
     for line in data:
-        if line != "\n":
+        if line:
             cur_sum += int(line.strip("\n"))
         else:
             max_sum = max(cur_sum, max_sum)
@@ -20,7 +20,7 @@ def challenge1(data):
     ##Part2 
     sums,cur_sum = [], 0
     for line in data:
-        if line != "\n":
+        if line:
             cur_sum += int(line.strip("\n"))
         else:
             sums.append(cur_sum)
