@@ -28,23 +28,19 @@ def is_nice(s):
 def is_nice_2(s):
     n = len(s)
 
-    s_set = set()
+    s_set = dict()
     double = False
     space = False
     for i in range(n-1):
         s_p = s[i] + s[i+1]
         if s_p in s_set:
-            if s_p[0] == s_p[1]:
-                if s[i-1] != s_p[0]:
-                # print(s_p)
-                    double = True 
-            else: double = True
-        s_set.add(s_p)
+            if i != s_set[s_p]:
+                double = True
+        else: s_set[s_p] = i+1
 
         if i < n-2 and s[i] == s[i+2]:
             space = True 
-    # print(f"double: {double}")
-    # print(f"space: {space}")
+
     if space and double: 
         print(s)
     return space and double
@@ -54,7 +50,7 @@ def is_nice_2(s):
 
 count = 0 
 p2 = 0
-input = ["fkgrqbyqpqcworqc"]
+# input = ["aaaa"]
 for s in input:
     if is_nice(s): count += 1
     if is_nice_2(s): p2 += 1
