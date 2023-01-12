@@ -3,12 +3,24 @@
 # Date = December 2022
 
 with open((__file__.rstrip("code.py")+"input.txt"), 'r') as input_file:
-    input = input_file.read()
+    input = [int(d) for d in input_file.read().replace("\n", " ").split(" ")]
 
 
+import math
+from itertools import combinations
 
-print("Part One : "+ str(None))
+def find_qe(n=3):
+    tgt = sum(input) // n 
+    for i in range(len(input)):
+        qe = [math.prod(c) for c in combinations(input,i) if sum(c) == tgt]
 
+        if qe:
+            return min(qe)
 
+p1 = find_qe(3)
 
-print("Part Two : "+ str(None))
+print("Part One : "+ str(p1))
+
+p2 = find_qe(4)
+
+print("Part Two : "+ str(p2))
