@@ -33,13 +33,15 @@ p2 = [None] * 8
 print(p2)
 while True:
     s = input + str(i)
+    if s == "abc3231929":
+        print(s)
     s = s.encode()
     hash = hashlib.md5(s)
 
     hex = hash.hexdigest()
     if hex[:5] == "00000":
         p,c = hex[5], hex[6]
-        if p.isdigit() and 0 <= int(p) < 8 and p2[int(p)] != None:
+        if p.isdigit() and 0 <= int(p) < 8 and p2[int(p)] == None:
             p2[int(p)] = c
             print(p2)
         if all(p2):
@@ -47,4 +49,4 @@ while True:
 
     i += 1
 
-print("Part Two : "+ str(None))
+print("Part Two : "+ str("".join(p2)))
